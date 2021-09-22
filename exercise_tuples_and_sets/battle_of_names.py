@@ -41,7 +41,9 @@ for i in range(1, n + 1):
 
 if sum(even_numbers) == sum(odd_numbers):
     print(', '.join(map(str, even_numbers.union(odd_numbers))))
+
 elif sum(odd_numbers) > sum(even_numbers):
     print(', '.join(map(str, odd_numbers.difference(even_numbers))))
+
 elif sum(even_numbers) > sum(odd_numbers):
     print(', '.join(map(str, even_numbers.symmetric_difference(odd_numbers))))
