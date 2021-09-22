@@ -36,6 +36,7 @@ for i in range(n):
         current_sets.append(current_set)
 
     current_longest = current_sets[0].intersection(current_sets[1])
+
     if len(current_longest) > len(longest_intersection):
         longest_intersection = current_longest
 
