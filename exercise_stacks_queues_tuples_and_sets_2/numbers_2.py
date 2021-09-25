@@ -30,21 +30,25 @@ for i in range(n):
     command = input()
 
     if "Add First" in command:
-        numbers = command[10:].split()
+        command = command.split()
+        numbers = command[2:]
         for n in numbers:
             set1.add(int(n))
 
     elif "Add Second" in command:
-        numbers1 = command[11:].split()
+        command = command.split()
+        numbers1 = command[2:]
         for n in numbers1:
             set2.add(int(n))
 
     elif "Remove First" in command:
-        numbers2 = set([int(x) for x in command[13:].split()])
+        command = command.split()
+        numbers2 = set([int(x) for x in command[2:]])
         set1 = set1.difference(numbers2)
 
     elif "Remove Second" in command:
-        numbers3 = set([int(x) for x in command[14:].split()])
+        command = command.split()
+        numbers3 = set([int(x) for x in command[2:]])
         set2 = set2.difference(numbers3)
 
     elif "Check Subset" in command:
