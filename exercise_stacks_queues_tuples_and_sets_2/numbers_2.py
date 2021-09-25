@@ -21,11 +21,8 @@
 # sys.stdin = StringIO(test_input1)
 # sys.stdin = StringIO(test_input2)
 
-set1 = set()
-set2 = set()
-
-[set1.add(int(el)) for el in input().split()]
-[set2.add(int(el)) for el in input().split()]
+set1 = set([int(el) for el in input().split()])
+set2 = set([int(el) for el in input().split()])
 
 n = int(input())
 
@@ -43,18 +40,18 @@ for i in range(n):
             set2.add(int(n))
 
     elif "Remove First" in command:
-        numbers2 = set(map(int, command[13:].split()))
+        numbers2 = set([int(x) for x in command[13:].split()])
         set1 = set1.difference(numbers2)
 
     elif "Remove Second" in command:
-        numbers3 = set(map(int, command[14:].split()))
+        numbers3 = set([int(x) for x in command[14:].split()])
         set2 = set2.difference(numbers3)
 
     elif "Check Subset" in command:
         if set1.issubset(set2) or set2.issubset(set1):
             print("True")
         else:
-            print(("False"))
+            print("False")
 
-print(', '.join(sorted(map(str, set1))))
-print(', '.join(sorted(map(str, set2))))
+print(', '.join(sorted([str(x) for x in set1])))
+print(', '.join(sorted([str(x) for x in set2])))
