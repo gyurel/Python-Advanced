@@ -57,5 +57,5 @@ for i in range(n):
         else:
             print("False")
 
-print(', '.join(sorted([str(x) for x in set1])))
-print(', '.join(sorted([str(x) for x in set2])))
+print(', '.join([str(x) for x in sorted(set1)]))
+print(', '.join([str(x) for x in sorted(set2)]))
