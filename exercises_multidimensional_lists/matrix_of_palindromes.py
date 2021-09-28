@@ -1,11 +1,11 @@
-# import sys
-# from io import StringIO
-#
-# text_input1 = """4 6"""
-#
-# text_input2 = """3 2"""
-#
-# sys.stdin = StringIO(text_input1)
+import sys
+from io import StringIO
+
+text_input1 = """4 6"""
+
+text_input2 = """3 2"""
+
+sys.stdin = StringIO(text_input1)
 # sys.stdin = StringIO(text_input2)
 
 r, c = [int(x) for x in input().split()]
