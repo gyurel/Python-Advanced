@@ -31,7 +31,7 @@
 
 n = int(input())
 
-matrix = [[x for x in input()] for r in range(n)]
+matrix = [[x for x in input().strip()] for r in range(n)]
 
 max_hits = 0
 current_el_row_index = 0
