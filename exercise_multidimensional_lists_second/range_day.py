@@ -1,42 +1,53 @@
-import sys
-from io import StringIO
-
-test_input1 = """. . . . .
-x . . . .
-. A . . .
-. . . x .
-. x . . x
-3
-shoot down
-move right 4
-move left 1
-"""
-
-test_input2 = """. . . . .
-. . . . . 
-. A x . .
-. . . . .
-. x . . .
-2
-shoot down
-shoot right
-"""
-
-test_input3 = """. . . . .
-. . . . .
-. . x . .
-. . . . .
-. x . . A
-3
-shoot down
-move right 2
-shoot left
-"""
-
-sys.stdin = StringIO(test_input1)
+# import sys
+# from io import StringIO
+#
+# test_input1 = """. . . . .
+# x . . . .
+# . A . . .
+# . . . x .
+# . x . . x
+# 3
+# shoot down
+# move right 4
+# move left 1
+# """
+#
+# test_input2 = """. . . . .
+# . . . . .
+# . A x . .
+# . . . . .
+# . x . . .
+# 2
+# shoot down
+# shoot right
+# """
+#
+# test_input3 = """. . . . .
+# . . . . .
+# . . x . .
+# . . . . .
+# . x . . A
+# 3
+# shoot down
+# move right 2
+# shoot left
+# """
+#
+# sys.stdin = StringIO(test_input1)
 # sys.stdin = StringIO(test_input2)
 # sys.stdin = StringIO(test_input3)
 
+
+def next_position(r, c, direction, steps):
+    if direction == "up":
+        r -= steps
+    elif direction == "down":
+        r += steps
+    elif direction == "left":
+        c -= steps
+    elif direction == "right":
+        c += steps
+    return r, c
 
 def next_step(r, c, direction):
     r, c = directions_dict[direction](r, c)
@@ -73,37 +84,38 @@ for row in range(len(matrix)):
     for col in range(len(matrix[row])):
         current = matrix[row][col]
         if current == 'A':
-            my_row = row
-            my_col = col
+            my_row, my_col = row, col
+
         elif current == 'x':
             targets_count += 1
 
 cmd_count = int(input())
 
 for _ in range(cmd_count):
+    if hit_target == targets_count:
+        break
 
     cmd = input().split()
     command = cmd[0]
 
     if command == 'move':
-        direction = cmd[1]
-        steps = int(cmd[2])
+        direction, steps = cmd[1], int(cmd[2])
 
-        for step in range(steps):
-            current_row, current_col = next_step(my_row, my_col, direction)
-            if is_inside(current_row, current_col, n):
-                if matrix[current_row][current_col] == 'x':
-                    break
-                matrix[my_row][my_col] = '.'
-                matrix[current_row][current_col] = 'A'
-                my_row = current_row
-                my_col = current_col
+        current_row, current_col = next_position(my_row, my_col, direction, steps)
+
+        if is_inside(current_row, current_col, n):
+            if matrix[current_row][current_col] == 'x':
+                continue
+            matrix[my_row][my_col] = '.'
+            matrix[current_row][current_col] = 'A'
+            my_row, my_col = current_row, current_col
+        else:
+            continue
 
     elif command == 'shoot':
         direction = cmd[1]
 
-        shoot_row = my_row
-        shoot_col = my_col
+        shoot_row, shoot_col = my_row, my_col
 
         while True:
             shoot_row, shoot_col = next_step(shoot_row, shoot_col, direction)
