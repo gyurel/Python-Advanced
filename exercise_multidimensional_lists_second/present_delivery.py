@@ -120,7 +120,7 @@ for rw in matrix:
         if el == 'V':
             nice_kids_left += 1
 
-if nice_kids_left > 0:
+if presents <= 0 and nice_kids_left > 0:
     print("Santa ran out of presents!")
 
 for r in matrix:
