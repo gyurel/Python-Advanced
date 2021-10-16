@@ -1,36 +1,36 @@
-import sys
-from io import StringIO
-
-test_input1 = """Ivan, Peter
-12 21 18 4 20 7 11
-9 D D D D D 10
-15 D T T T D 3
-2 D T B T D 19
-17 D T T T D 6
-22 D D D D D 14
-5 8 23 13 16 1 24
-(3, 3)
-"""
-
-test_input2 = """George, Hristo
-17 8 21 6 13 3 24
-16 D D D D D 14
-7 D T T T D 15
-23 D T B T D 2
-9 D T T T D 22
-19 D D D D D 10
-12 18 4 20 5 11 1
-(1, 0)
-(2, 3)
-(0, 0)
-(4, 2)
-(5, 1)
-(3, 1)
-(0, 0)
-(2, 3)
-"""
-
-sys.stdin = StringIO(test_input1)
+# import sys
+# from io import StringIO
+#
+# test_input1 = """Ivan, Peter
+# 12 21 18 4 20 7 11
+# 9 D D D D D 10
+# 15 D T T T D 3
+# 2 D T B T D 19
+# 17 D T T T D 6
+# 22 D D D D D 14
+# 5 8 23 13 16 1 24
+# (3, 3)
+# """
+#
+# test_input2 = """George, Hristo
+# 17 8 21 6 13 3 24
+# 16 D D D D D 14
+# 7 D T T T D 15
+# 23 D T B T D 2
+# 9 D T T T D 22
+# 19 D D D D D 10
+# 12 18 4 20 5 11 1
+# (1, 0)
+# (2, 3)
+# (0, 0)
+# (4, 2)
+# (5, 1)
+# (3, 1)
+# (0, 0)
+# (2, 3)
+# """
+#
+# sys.stdin = StringIO(test_input1)
 # sys.stdin = StringIO(test_input2)
 
 
@@ -78,6 +78,7 @@ while True:
 
     if not is_inside(row, col, n):
         players_turns[current_player] += 1
+        current_player, second_player = second_player, current_player
         try:
             shot = input()
         except EOFError:
