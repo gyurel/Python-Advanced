@@ -12,18 +12,12 @@ while males and females:
     if current_mail % 25 == 0:
         males.pop()
         males.pop()
-        if males:
-            current_mail = males[-1]
-        else:
-            break
+        continue
 
     if current_femail % 25 == 0:
         females.popleft()
         females.popleft()
-        if females:
-            current_femail = females[0]
-        else:
-            break
+        continue
 
     if current_mail == current_femail:
         males.pop()
